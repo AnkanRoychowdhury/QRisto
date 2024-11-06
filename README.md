@@ -1,22 +1,10 @@
-# Turborepo Docker starter
-
-This is an official Docker starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest -e with-docker
-```
-
 ## What's inside?
 
-This Turborepo includes the following:
+This Repo includes the following:
 
 ### Apps and Packages
 
-- `web`: a [Next.js](https://nextjs.org/) app
+- `web`: a [Next.js](https://nextjs.org/) website for QRisto
 - `api`: an [Express](https://expressjs.com/) server
 - `@repo/ui`: a React component library
 - `@repo/logger`: Isomorphic logger (a small wrapper around console.log)
@@ -24,43 +12,26 @@ This Turborepo includes the following:
 - `@repo/typescript-config`: tsconfig.json's used throughout the monorepo
 - `@repo/jest-presets`: Jest configurations
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Each package/app is not 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Docker
+### JavaScript
 
-This repo is configured to be built with Docker, and Docker compose. To build all apps in this repo:
+This repo is configured to be built with JavaScript, and Next.js To build all apps in this repo:
 
-```
+
 # Install dependencies
-yarn install
-
-# Create a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-docker network create app_network
-
-# Build prod using new BuildKit engine
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build
-
-# Start prod in detached mode
-docker-compose -f docker-compose.yml up -d
+```
+npm install
 ```
 
-Open http://localhost:3000.
-
-To shutdown all running containers:
-
+# Run project
 ```
-# Stop all running containers
-docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
+turbo dev
 ```
 
-### Remote Caching
+Open http://localhost:3000 for frontend
 
-This example includes optional remote caching. In the Dockerfiles of the apps, uncomment the build arguments for `TURBO_TEAM` and `TURBO_TOKEN`. Then, pass these build arguments to your Docker build.
-
-You can test this behavior using a command like:
-
-`docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache`
+Open http://localhost:7676 for api (Backend)
 
 ### Utilities
 
